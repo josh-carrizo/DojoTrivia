@@ -21,10 +21,17 @@
 
     <b-row class=" body-row">
     <b-col></b-col>
-        <b-col> 
-            <b-card no-body class="bg-secondary border-0 mb-0">
+        <b-col cols="5"> 
+        <router-link class="link-inicio" v-bind:to="{path: '/register'}">
+
+            <div>
+                <b-button pill variant="outline-danger" block >Don't you have account yet? Get one now!</b-button>
+            </div>
+        </router-link>
+        <br>
+            <b-card bg-variant="light" no-body class="bg-secondary border-0 mb-0">
                 <b-card-header class="bg-transparent pb-5"  >
-                    <div class="text-muted text-center mt-2 mb-3"><small class="text-white">Sign in with</small></div>
+                    <div class="text-muted text-center mt-2 mb-3"><small class="text-black">Sign in with</small></div>
                     <div class="btn-wrapper text-center">
                         <a href="#" class="btn btn-neutral btn-icon">
                         <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
@@ -38,7 +45,7 @@
             </b-card-header>  
             <b-card-body class="px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                    <small class="text-white">Or sign in with credentials</small>
+                    <small class="text-black">Or sign in with credentials</small>
                 </div> 
             <!--Login   
             <b-form @submit="LogIn" @reset="onResetLogIn" v-if="show">-->
@@ -68,7 +75,11 @@
             </b-card>
         </b-col>
         <b-col></b-col>
+        <br>
+        <br>
+        <br>
     </b-row>
+   
 </div>    
     
 </template>

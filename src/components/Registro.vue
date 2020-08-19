@@ -1,5 +1,5 @@
 <template> 
-<div class="login-"> 
+<div class="register"> 
     <!-- Header -->
     <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
         <b-container>
@@ -21,12 +21,19 @@
 
     <b-row class=" body-row">
         <b-col></b-col>
-    <b-col>
+    <b-col cols="5">
         <!-- REGISTRO USUARIOS
         <b-form @submit="CreateUser" @reset="onReset" v-if="show">-->
-        <b-card no-body class="bg-secondary border-0 mb-0">
+        <router-link class="link-inicio" v-bind:to="{path: '/login'}">
+
+            <div>
+                <b-button pill variant="outline-danger" block >Do you have account? Get Login!</b-button>
+            </div>
+        </router-link>
+            <br>
+        <b-card bg-variant="light" no-body class="bg-secondary border-0 mb-0">
             <b-card-header class="bg-transparent pb-5"  >
-                <div class="text-muted text-center mt-2 mb-3"><small class="text-white">Sign in with</small></div>
+                <div class="text-muted text-center mt-2 mb-3"><small class="text-black">Sign in with</small></div>
                     <div class="btn-wrapper text-center">
                         <a href="#" class="btn btn-neutral btn-icon">
                         <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
@@ -40,7 +47,7 @@
             </b-card-header>
             <b-card-body class="px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                    <small class="text-white">Or sign in with credentials</small>
+                    <small class="text-black">Or sign in with credentials</small>
                 </div>
                 <b-form @submit.prevent="CreateUser"  v-if="show">
 
@@ -74,54 +81,9 @@
         </b-card>
     </b-col>
     <b-col></b-col>
-        <b-col> 
-            <b-card no-body class="bg-secondary border-0 mb-0">
-                <b-card-header class="bg-transparent pb-5"  >
-                    <div class="text-muted text-center mt-2 mb-3"><small class="text-white">Sign in with</small></div>
-                    <div class="btn-wrapper text-center">
-                        <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
-                        <span class="btn-inner--text">Github</span>
-                        </a>
-                        <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
-                        <span class="btn-inner--text">Google</span>
-                        </a>
-                    </div>
-            </b-card-header>  
-            <b-card-body class="px-lg-5 py-lg-5">
-                <div class="text-center text-muted mb-4">
-                    <small class="text-white">Or sign in with credentials</small>
-                </div> 
-            <!--Login   
-            <b-form @submit="LogIn" @reset="onResetLogIn" v-if="show">-->
-            <b-form @submit.prevent="LogIn" v-if="show">
 
-                <b-form-group id="input-group-1-login" label="Your Name:" label-for="input-1-login">
-                    <b-form-input id="input-1-login" v-model="formLogIn.name" required placeholder="Enter name"
-                    ></b-form-input>
-                </b-form-group>
-
-                <b-form-group id="input-group-2-login" label="Email address:" label-for="input-2-login" >
-                    <b-form-input id="input-2-login" v-model="formLogIn.email" type="email" required
-                    placeholder="Enter email">
-                    </b-form-input>
-                </b-form-group>
-
-                <b-form-group b-form-group id="input-group-3-login" label="Password:" label-for="input-3-login" >
-                    <b-form-input type="password" class="form-control" label-for="input-3-login"
-                        name="password" required v-model="formLogIn.password" placeholder="Enter email">
-                    </b-form-input>
-                </b-form-group>
-
-                <b-button type="submit" variant="primary">Log In</b-button>
-                <!--<b-button type="reset" variant="danger">Reset</b-button>-->
-            </b-form>
-            </b-card-body>
-            </b-card>
-        </b-col>
-        <b-col></b-col>
     </b-row>
+    <div class="col s2 m2"></div>
 </div>    
     
 </template>
@@ -139,11 +101,6 @@ export default {
                 RepeatPassword:'',
                 email: '',
                 name: '',
-            },
-            formLogIn:{
-                name:'',
-                password:'',
-                email:''
             },
             
             show: true
@@ -165,13 +122,6 @@ export default {
             } 
             const datos= {name:this.formCreate.name, email:this.formCreate.email, password: this.formCreate.password}
             this.$store.dispatch('registerAction',datos)
-
-        },
-        LogIn(){
-            console.log('Login user')
-            const datosLogIn= {email:this.formLogIn.email, password: this.formLogIn.password}
-            this.$store.dispatch('logIn',datosLogIn)
-           
 
         },
         LogOut(){
