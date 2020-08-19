@@ -5,16 +5,15 @@ import '@babel/polyfill'
 import 'mutationobserver-shim'
 
 import firebase from 'firebase/app'
-import 'firebase/auth';
-import VueFirestore from 'vue-firestore';
+import 'firebase/auth'
+import VueFirestore from 'vue-firestore'
 import './firebase.js'
-
 
 import './plugins/bootstrap-vue'
 import App from './App.vue'
-import router from './router';
+import router from './router'
 
-Vue.use(VueFirestore, {key: 'id'});      // adding this use statement
+Vue.use(VueFirestore, {key: 'id'})      // adding this use statement
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
@@ -27,10 +26,10 @@ const store = new Vuex.Store({
   },
   mutations:{
     setUser(state, newUser){
-      state.User = newUser;
+      state.User = newUser
     },
     setError(state, newError) {
-        state.error = newError;
+        state.error = newError
     }
 },
   actions: {
@@ -38,7 +37,7 @@ const store = new Vuex.Store({
       firebase.auth()
         .createUserWithEmailAndPassword(datos.email, datos.password)
         .then(function (response) {
-          console.log(response);
+          console.log(response)
           // si el registro es exitoso, entonces le agrego el nombre
           firebase.auth().currentUser.updateProfile({
             displayName: datos.name
@@ -46,13 +45,13 @@ const store = new Vuex.Store({
         })
         
         .then(function (response) {
-          console.log(response);
+          console.log(response)
           context.commit('setError', null);
           context.commit('setUser', {email: datos.email, name:datos.name});
           router.push('/');
         })
         .catch ((error) => {
-          console.log(error);
+          console.log(error)
           context.commit('setError', error.message);
           context.commit('setUser',null);
         })
@@ -64,12 +63,12 @@ const store = new Vuex.Store({
       .then(response => {
         console.log(response)
         context.commit('setError', null);
-        context.commit('setUser', response.user);
-        router.push('/Success');
+        context.commit('setUser', response.user)
+        router.push('/Success')
       })
       .catch(error => {
-        context.commit('setError', error.message);
-        context.commit('setUser', null);
+        context.commit('setError', error.message)
+        context.commit('setUser', null)
       })
     },
 
@@ -78,8 +77,8 @@ const store = new Vuex.Store({
       .auth()
       .signOut()
         .then(() => {
-          context.commit('setError', null);
-          context.commit('setUser', null);
+          context.commit('setError', null)
+          context.commit('setUser', null)
           router.push('Registro')
         })
       }

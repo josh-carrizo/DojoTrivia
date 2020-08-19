@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info">
+      <router-link class="link-inicio" v-bind:to="{path: '/'}">
+        <b-icon icon="house-door-fill" />
+      </router-link>
+     
     <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -14,16 +18,12 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+           <router-link class="link-inicio" v-bind:to="{path: '/register'}">
+            <b-button variant="#6f42c1" class="mb-2">
+              <b-icon icon="person-fill" aria-hidden="true"/> Login
+            </b-button>
+          </router-link>
         </b-nav-form>
-
-        <b-nav-item-dropdown text="Lang" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
 
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
