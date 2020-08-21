@@ -7,7 +7,7 @@
                 <b-row class="justify-content-center">
                     <b-col xl="5" lg="6" md="8" class="px-5">
                         <h1 class="text-black">Welcome!</h1>
-                        <p class="text-lead text-black">blablabla</p>
+                        <p class="text-lead text-black">Registrate!</p>
                     </b-col>
                 </b-row>
             </div>
@@ -21,69 +21,63 @@
 
     <b-row class=" body-row">
         <b-col></b-col>
-    <b-col cols="5">
-        <!-- REGISTRO USUARIOS
-        <b-form @submit="CreateUser" @reset="onReset" v-if="show">-->
-        <router-link class="link-inicio" v-bind:to="{path: '/login'}">
-
-            <div>
-                <b-button pill variant="outline-danger" block >Do you have account? Get Login!</b-button>
-            </div>
-        </router-link>
+        <b-col cols="5">
+            <router-link class="link-inicio" v-bind:to="{path: '/login'}">
+                <div>
+                    <b-button pill variant="outline-danger" block >Do you have account? Get Login!</b-button>
+                </div>
+            </router-link>
             <br>
-        <b-card bg-variant="light" no-body class="bg-secondary border-0 mb-0">
-            <b-card-header class="bg-transparent pb-5"  >
-                <div class="text-muted text-center mt-2 mb-3"><small class="text-black">Sign in with</small></div>
+            <b-card bg-variant="light" no-body class="bg-secondary border-0 mb-0">
+                <b-card-header class="bg-transparent pb-5"  >
+                    <div class="text-muted text-center mt-2 mb-3">
+                        <small class="text-black">Sign in with</small>
+                    </div>
                     <div class="btn-wrapper text-center">
                         <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
-                        <span class="btn-inner--text">Github</span>
+                            <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
+                            <span class="btn-inner--text">Github</span>
                         </a>
                         <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
-                        <span class="btn-inner--text">Google</span>
+                            <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
+                            <span class="btn-inner--text">Google</span>
                         </a>
                     </div>
-            </b-card-header>
-            <b-card-body class="px-lg-5 py-lg-5">
-                <div class="text-center text-muted mb-4">
-                    <small class="text-black">Or sign in with credentials</small>
-                </div>
-                <b-form @submit.prevent="CreateUser"  v-if="show">
+                </b-card-header>
+                <b-card-body class="px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        <small class="text-black">Or sign in with credentials</small>
+                    </div>
+                    <!-- REGISTRO USUARIOS-->
+                    <b-form @submit.prevent="CreateUser" @reset.prevent="onReset"  v-if="show">
+                        <b-form-group id="input-group-1" label="Your Name:" label-for="input-1">
+                            <b-form-input id="input-1" v-model="formCreate.name" required   placeholder="Enter name"></b-form-input>
+                        </b-form-group>
 
-                    <b-form-group id="input-group-1" label="Your Name:" label-for="input-1">
-                        <b-form-input id="input-1" v-model="formCreate.name" required   placeholder="Enter name"
-                        ></b-form-input>
-                    </b-form-group>
+                        <b-form-group id="input-group-2" label="Email address:" label-for="input-2"   description="We'll never share your email with anyone else." class="text-white">
+                            <b-form-input id="input-2" v-model="formCreate.email" type="email" required placeholder="Enter email"></b-form-input>
+                        </b-form-group>
 
-                    <b-form-group id="input-group-2" label="Email address:" label-for="input-2"   description="We'll never share your email with anyone else." class="text-white">
-                        <b-form-input id="input-2" v-model="formCreate.email" type="email" required
-                        placeholder="Enter email">
-                        </b-form-input>
-                    </b-form-group>
+                        <b-form-group id="input-group-3" label="Your Password:" label-for="input-3"  >
+                            <b-form-input type="password" class="form-control" label-for="input-3" name="password" required v-model="formCreate.password" placeholder="Enter your password"></b-form-input>
+                        </b-form-group>
 
-                    <b-form-group id="input-group-3" label="Your Password:" label-for="input-3"  >
-                        <b-form-input type="password" class="form-control" label-for="input-3"
-                            name="password" required v-model="formCreate.password" placeholder="Enter your password">
-                        </b-form-input>
-                    </b-form-group>
+                        <b-form-group id="input-group-4" label="Repeat Your Password:" label-for="input-4"  >
+                            <b-form-input type="password" class="form-control" label-for="input-4" name="RepeatPassword" required v-model="formCreate.RepeatPassword" placeholder="Repeat your password"></b-form-input>
+                        </b-form-group>
 
-                    <b-form-group id="input-group-4" label="Repeat Your Password:" label-for="input-4"  >
-                        <b-form-input type="password" class="form-control" label-for="input-4"
-                            name="RepeatPassword" required v-model="formCreate.RepeatPassword" placeholder="Repeat your password">
-                        </b-form-input>
-                    </b-form-group>
-
-                    <b-button type="submit" variant="primary">Create User</b-button>
-                    <!--<b-button type="reset" variant="danger">Reset</b-button>-->
-                </b-form>
-            </b-card-body>
-        </b-card>
-    </b-col>
-    <b-col></b-col>
-
+                        <b-button-group class="mx-1">
+                            <b-button type="submit" variant="outline-info">Create user</b-button>
+                        </b-button-group>
+                        <b-button-group class="mx-1">
+                            <b-button type="reset" variant="outline-danger">Reset</b-button>
+                        </b-button-group>
+                    </b-form>
+                </b-card-body>
+            </b-card>
+        </b-col>
+        <b-col></b-col>
     </b-row>
-    <div class="col s2 m2"></div>
 </div>    
     
 </template>
@@ -127,11 +121,7 @@ export default {
         LogOut(){
             this.$store.dispatch('logOut')
 
-        }
-        
-
-
-        }/*,
+        },
         onReset(evt) {
             evt.preventDefault()
             // Reset our form values
@@ -141,16 +131,8 @@ export default {
             this.formCreate.password = '';
             this.formCreate.RepeatPassword = '';
 
-        },
-        onResetLogIn(evt) {
-            evt.preventDefault()
-            // Reset our form values
-
-            this.formLogIn.email = '';
-            this.formLogIn.name = '';
-            this.formLogIn.password = '';
-
-        },*/
+        }
+    }
 }
 
 
