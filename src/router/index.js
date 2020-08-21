@@ -5,9 +5,9 @@ import firebase from 'firebase/app';
 import Home from '@/components/Home.vue'
 import Registro from '@/components/Registro.vue';
 import login from '@/components/login.vue';
-import Success from '@/components/Success.vue';
-import moldeMovies from '@/components/moldeMovies.vue';
-import addMovie from '@/components/addMovie.vue';
+import playTrivia from '@/components/playTrivia.vue';
+import finishTrivia from '@/components/finishTrivia.vue';
+import addQuestion from '@/components/addQuestion.vue';
 import NotFound from '@/components/NotFound.vue';
 Vue.use(VueRouter);
 
@@ -16,6 +16,7 @@ const router = new VueRouter({
       {
         path: '/', 
         component: Home,
+        meta: { requiresAuth: true }
       },
       {
         path: '/register', 
@@ -26,20 +27,20 @@ const router = new VueRouter({
         component: login,
       },
       {        
-        path:'/Success',
-        component: Success,
-        name: 'Success',
-        meta: { requiresAuth: true }
-
-      },
-      {        
-        path:'/mMovies',
-        component: moldeMovies,
+        path:'/playTrivia',
+        component: playTrivia,
+        name: 'playTrivia',
         meta: { requiresAuth: true }
       },
       {        
-        path:'/addMovie',
-        component: addMovie,
+        path:'/finishTrivia',
+        component: finishTrivia,
+        name: 'finishTrivia',
+        meta: { requiresAuth: true }
+      },
+      {        
+        path:'/addQuestion',
+        component: addQuestion,
         meta: { requiresAuth: true }
 
       },
@@ -50,17 +51,13 @@ const router = new VueRouter({
     ]
   })
 
-  router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record  => record.meta.requiresAuth)
-    const currentUser = firebase.auth().currentUser
-
-    if (requiresAuth && !currentUser) {
-        next('/login')
-    } else if (requiresAuth && currentUser) {
-        next()
-    } else {
-        next()
-    }
+router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser;
+  if (to.meta.requiresAuth && currentUser == null) {
+    next('/login')
+  } else {
+    next()
+  }
 })
   
   export default router;

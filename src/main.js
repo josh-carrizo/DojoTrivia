@@ -64,14 +64,13 @@ const store = new Vuex.Store({
         console.log(response)
         context.commit('setError', null);
         context.commit('setUser', response.user)
-        router.push('/Success')
+        router.push('/')
       })
       .catch(error => {
         context.commit('setError', error.message)
         context.commit('setUser', null)
       })
     },
-
     logOut(context){
       firebase
       .auth()
@@ -79,11 +78,12 @@ const store = new Vuex.Store({
         .then(() => {
           context.commit('setError', null)
           context.commit('setUser', null)
-          router.push('Registro')
+          router.push('/login')
         })
-      }
-
-      
+      },
+    triviaPlayed(){
+      router.push('/finishTrivia')
+    }
   }
 })
 
