@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import firebase from 'firebase/app';
 
 import Home from '@/components/Home.vue'
 import Registro from '@/components/Registro.vue';
@@ -10,7 +11,7 @@ import addMovie from '@/components/addMovie.vue';
 import NotFound from '@/components/NotFound.vue';
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
     routes: [
       {
         path: '/', 
@@ -28,14 +29,19 @@ export default new VueRouter({
         path:'/Success',
         component: Success,
         name: 'Success',
+        meta: { requiresAuth: true }
+
       },
       {        
         path:'/mMovies',
-        component: moldeMovies
+        component: moldeMovies,
+        meta: { requiresAuth: true }
       },
       {        
         path:'/addMovie',
-        component: addMovie
+        component: addMovie,
+        meta: { requiresAuth: true }
+
       },
       {
         path: '*', 
@@ -43,3 +49,18 @@ export default new VueRouter({
       }
     ]
   })
+
+  router.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(record  => record.meta.requiresAuth)
+    const currentUser = firebase.auth().currentUser
+
+    if (requiresAuth && !currentUser) {
+        next('/login')
+    } else if (requiresAuth && currentUser) {
+        next()
+    } else {
+        next()
+    }
+})
+  
+  export default router;

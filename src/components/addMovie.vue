@@ -1,49 +1,51 @@
 <template>
 <div class="addmovie">
     <h3>Add New Show</h3>
-        <div class="row">
-        <div class="col s2 m2" ></div>
-            <form class="col s8 m8" @submit.prevent="addShow">
-            <div class="row">
-                <div class="input-field col s6">
-                <input id="title" required="required" type="text" class="validate" v-model="addTitle">
-                <label for="title">Title</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="network" required="required" type="text" class="validate" v-model="addNetwork">
-                <label for="network">Network</label>
-                </div>
-            </div>      
-            <div class="row">
-                <div class="input-field col s6">
-                <input id="genres" required="required" type="text" class="validate" v-model="addGenres">
-                <label for="genres">Genres Separated w/space</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="numberOfSeasons" type="number" required="required" class="validate" v-model="addNumber">
-                <label for="numberOfSeasons">Number of Seasons</label>
-                </div>
-            </div>
-            <div class="row"> 
-                <div class="switch col s6">
+        <b-row>
+          <b-col cols="2"></b-col>
+          <b-col cols="8">
+            <b-form @submit.prevent="addShow">
+              <b-row>
+                  <b-col cols="6" class="input-field">
+                    <input id="title" required="required" type="text" class="validate" v-model="addTitle">
+                    <label for="title">Title</label>
+                  </b-col>
+                  <b-col cols="6" class="input-field">
+                    <input id="network" required="required" type="text" class="validate" v-model="addNetwork">
+                    <label for="network">Network</label>
+                  </b-col>
+              </b-row>      
+              <b-row>
+                <b-col cols="6" class="input-field">
+                  <input id="genres" required="required" type="text" class="validate" v-model="addGenres">
+                  <label for="genres">Genres Separated w/space</label>
+                </b-col>
+                <b-col cols="6" class="input-field">
+                  <input id="numberOfSeasons" type="number" required="required" class="validate" v-model="addNumber">
+                  <label for="numberOfSeasons">Number of Seasons</label>
+                </b-col>
+              </b-row>
+              <b-row> 
+                <b-col cols="6" class="switch">
                     <label>
                     No, isn't current
                     <input type="checkbox" v-model="addCurrent" >
                     <span class="lever"></span>
                     Is current
                     </label>
-                </div>
-                <button class="btn waves-effect waves-light col s6 right" type="submit" name="action">ADD doJOSHow
-                </button>
-            </div>  
-            </form>
-        </div>
-        <router-link class="link-inicio" v-bind:to="{path: '/mMovie'}">
-            <div>
-                <b-button pill variant="outline-danger" block >Do you want watch the movie list? Click Here!</b-button>
-            </div>
-        </router-link>
-
+                </b-col>
+                <b-button variant="dark" class="btn waves-effect waves-light col s6 right" type="submit" name="action">ADD doJOSHow
+                </b-button>
+              </b-row>  
+            </b-form>
+          </b-col>
+          <b-col cols="2"></b-col>
+        </b-row>
+    <router-link class="link-inicio" v-bind:to="{path: '/mMovie'}">
+      <div>
+        <b-button pill variant="outline-danger" block >Do you want watch the movie list? Click Here!</b-button>
+      </div>
+    </router-link>
 </div>
 </template>
 <script>

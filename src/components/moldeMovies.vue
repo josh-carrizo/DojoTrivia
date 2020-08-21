@@ -1,9 +1,9 @@
 <template>
-  <div class="hello">
-    <!--tabla de datos-->
-    <div class="row">
-      <div class="col s2 m2"></div>
-      <div class="col s8 m8">
+  <div class="moldeMovies">
+
+    <b-row>
+      <b-col></b-col>
+      <b-col cols="8">
 
         <table class="striped centered">
           <thead>
@@ -36,14 +36,16 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-    <router-link class="link-inicio" v-bind:to="{path: '/addMovie'}">
-        <div>
-            <b-button pill variant="outline-danger" block >Do you want add another movie? Click Here!</b-button>
-        </div>
-    </router-link>
-    <div class="col s2 m2"></div>
+      
+    
+        <router-link class="link-inicio" v-bind:to="{path: '/addMovie'}">
+            <div>
+                <b-button pill variant="outline-danger"  >Do you want add another movie? Click Here!</b-button>
+            </div>
+        </router-link>
+      </b-col>
+      <b-col ></b-col>
+    </b-row>
   </div>
 </template>
 
