@@ -13,8 +13,8 @@
       <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-navbar-brand  v-if="User">Hi {{ User.displayName }} !</b-navbar-brand>     
-          <b-button variant="#6f42c1" class="mb-2" v-if="User">
-            <b-icon icon="person-fill" aria-hidden="true" @click.prevent="logout" class="btn" href="#"/> Logout 
+          <b-button variant="#6f42c1" class="mb-2" @click.prevent="logout" v-if="User">
+            <b-icon icon="person-fill" aria-hidden="true"  class="btn"/> Logout 
           </b-button>
         </b-navbar-nav>
       </b-collapse>

@@ -22,7 +22,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state:{
     User: null,
-    error:null,
+    error: null,
     puntos: null
   },
   mutations:{
