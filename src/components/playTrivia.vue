@@ -2,7 +2,7 @@
 <div class="playTrivia">
   <h1>Trivia</h1>
   <b-form @submit.prevent="finishTrivia">
-    <b-form-radio-group>
+    <b-form-radio-group required> 
       <br>
       <div>{{selectedQuestion[0].question}}</div>
       <b-form-radio v-model="question0" :value="selectedQuestion[0].sortAnswers[0].isCorrect ? '1' : '0' ">{{selectedQuestion[0].sortAnswers[0].text}}</b-form-radio>
@@ -13,7 +13,7 @@
     </b-form-radio-group>
     <br>
 
-    <b-form-radio-group>
+    <b-form-radio-group required>
       <br>
       <div>{{selectedQuestion[1].question}}</div>
       <b-form-radio v-model="question1" :value="selectedQuestion[1].sortAnswers[0].isCorrect ? '1' : '0' ">{{selectedQuestion[1].sortAnswers[0].text}}</b-form-radio>
@@ -24,7 +24,7 @@
     </b-form-radio-group>
     <br>
 
-    <b-form-radio-group>
+    <b-form-radio-group required>
       <br>
       <div>{{selectedQuestion[2].question}}</div>
       <b-form-radio v-model="question2" :value="selectedQuestion[2].sortAnswers[0].isCorrect ? '1' : '0' ">{{selectedQuestion[2].sortAnswers[0].text}}</b-form-radio>
@@ -101,7 +101,8 @@ export default {
         fechaActual: fechaActual
 
       });
-    this.$store.dispatch('triviaPlayed')
+    const datospuntaje= {points: correctAnswers, porcentaje: porcentaje}
+    this.$store.dispatch('triviaPlayed', datospuntaje)
 
     }
   }

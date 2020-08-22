@@ -6,7 +6,7 @@
       <br>
       <b-alert show dismissible variant="success">
         <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-        <span class="alert-text"><strong>That was great {{User.displayName}}!</strong> Your score is {{qpoints.points}} </span>
+        <span class="alert-text"><strong>That was great {{User.displayName}}!</strong> Your score is {{puntos.points}}/3, {{puntos.porcentaje}}% </span>
       </b-alert>
       <br>
       <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
@@ -56,9 +56,16 @@ import { db } from '@/firebase';
 
   export default {
     name:"finishTrivia",
+    created(){
+      setTimeout( () => this.$router.push({ path: '/'}), 6000);
+
+    },
     computed: {
       User() {
         return this.$store.state.User;
+      },
+      puntos(){
+        return this.$store.state.puntos;
       }
     },
     firestore() { 

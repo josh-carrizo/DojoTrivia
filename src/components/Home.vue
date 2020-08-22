@@ -51,12 +51,17 @@
 <script>
 import { db } from '@/firebase';  
 
-  export default {
-    name:"Home",
-     firestore() { 
-      return {
-        qpoints: db.collection('qpoints')
-      }
+export default {
+  name:"Home",
+  computed: {
+    User() {
+      return this.$store.state.User;
+    }
+  },
+    firestore() { 
+    return {
+      qpoints: db.collection('qpoints')
     }
   }
+}
 </script>

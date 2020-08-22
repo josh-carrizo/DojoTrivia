@@ -22,14 +22,18 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state:{
     User: null,
-    error:null
+    error:null,
+    puntos: null
   },
   mutations:{
     setUser(state, newUser){
       state.User = newUser
     },
     setError(state, newError) {
-        state.error = newError
+      state.error = newError
+    },
+    setPoints(state, datospuntaje){
+      state.puntos = datospuntaje
     }
 },
   actions: {
@@ -38,7 +42,6 @@ const store = new Vuex.Store({
         .createUserWithEmailAndPassword(datos.email, datos.password)
         .then(function (response) {
           console.log(response)
-          // si el registro es exitoso, entonces le agrego el nombre
           firebase.auth().currentUser.updateProfile({
             displayName: datos.name
           })
@@ -47,7 +50,7 @@ const store = new Vuex.Store({
         .then(function (response) {
           console.log(response)
           context.commit('setError', null);
-          context.commit('setUser', {email: datos.email, name:datos.name});
+          context.commit('setUser', {email: datos.email, displayName:datos.name});
           router.push('/');
         })
         .catch ((error) => {
@@ -81,7 +84,8 @@ const store = new Vuex.Store({
           router.push('/login')
         })
       },
-    triviaPlayed(){
+    triviaPlayed(context, datospuntaje){
+      context.commit('setPoints', datospuntaje);
       router.push('/finishTrivia')
     }
   }
