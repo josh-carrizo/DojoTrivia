@@ -1,5 +1,6 @@
 <template>
 <div class="playTrivia">
+  <br>
   <h1>Trivia</h1>
   <b-form @submit.prevent="finishTrivia">
     <b-form-radio-group required> 
