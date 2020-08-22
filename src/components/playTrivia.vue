@@ -32,7 +32,7 @@
       <br>
     </b-form-radio-group>
     <br>
-    <b-button variant="info"  type="submit"><b-icon icon="check-square-fill">Finish Trivia</b-button>
+    <b-button variant="info"  type="submit">Finish Trivia <b-icon icon="check-square-fill"/></b-button>
   </b-form>
 
 </div>
@@ -50,13 +50,11 @@ export default {
       question0: '',
       question1: '',
       question2: ''
-      
     }
   },
   firestore() { 
     return {
       questions: db.collection('questions')
-
     }
   },
   computed: {
@@ -93,14 +91,12 @@ export default {
 
       db.collection('qpoints').add({
         userName: this.User.displayName,
-        points : correctAnswers + '/3',
-        porcentaje: porcentaje + '%',
+        points : `${correctAnswers}/3`,
+        porcentaje: `${porcentaje}%`,
         fechaActual: fechaActual
-
-      });
+      })
     const datospuntaje= {points: correctAnswers, porcentaje: porcentaje}
     this.$store.dispatch('triviaPlayed', datospuntaje)
-
     }
   }
 }

@@ -95,7 +95,7 @@ export default {
         LogOut(){
             this.$store.dispatch('logOut')
         },
-        onReset(evt) {
+        onReset() {
             this.formCreate.email = '';
             this.formCreate.name = '';
             this.formCreate.password = '';
