@@ -58,7 +58,7 @@ export default {
   },
     firestore() { 
     return {
-      qpoints: db.collection('qpoints')
+      qpoints: db.collection('qpoints').orderBy("userName")
     }
   }
 }
