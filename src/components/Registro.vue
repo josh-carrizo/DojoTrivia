@@ -51,6 +51,7 @@
                         <b-button-group class="mx-1">
                             <b-button type="submit" variant="outline-info">Create user</b-button>
                         </b-button-group>
+
                         <b-button-group class="mx-1">
                             <b-button type="reset" variant="outline-danger">Reset</b-button>
                         </b-button-group>
@@ -60,14 +61,10 @@
         </b-col>
         <b-col></b-col>
     </b-row>
-</div>    
-    
+</div>
 </template>
 
 <script>
-
-
-
 export default {
     name:'Registro',
     data() {
@@ -78,41 +75,31 @@ export default {
                 email: '',
                 name: '',
             },
-            
             show: true
         }
-
     },
     computed: {
-    error() {
-      return this.$store.state.error;
-    }
+        error() {
+            return this.$store.state.error;
+        }
     },
     methods: {
         CreateUser() {
-
             if(this.formCreate.password != this.formCreate.RepeatPassword){
                 alert('Ambas contraseñas deben coincidir');
                 return;
-
             } 
             const datos= {name:this.formCreate.name, email:this.formCreate.email, password: this.formCreate.password}
             this.$store.dispatch('registerAction',datos)
-
         },
         LogOut(){
             this.$store.dispatch('logOut')
-
         },
         onReset(evt) {
-            evt.preventDefault()
-            // Reset our form values
-
             this.formCreate.email = '';
             this.formCreate.name = '';
             this.formCreate.password = '';
             this.formCreate.RepeatPassword = '';
-
         }
     }
 }
@@ -133,10 +120,5 @@ export default {
 
 .text-white{
     color:white
-}
-
-card{
-    background-color: cadetblue;
-    opacity:80%;
 }
 </style>

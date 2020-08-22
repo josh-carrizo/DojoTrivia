@@ -9,7 +9,6 @@
         <b-button variant="success"><b-icon icon="controller"></b-icon> Play!</b-button>
       </router-link>
         <br>
-        <br>
         <h6>Click the button above to start the trivia game</h6>
       </b-jumbotron>
     </b-col>
@@ -44,7 +43,6 @@
     </b-col>
     <b-col></b-col>
   </b-row>
-
 </div>
 </template>
 

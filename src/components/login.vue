@@ -30,7 +30,7 @@
             <br>
             <b-card bg-variant="light" no-body class="bg-secondary border-0 mb-0">
                 <b-card-body class="px-lg-5 py-lg-5">
-                <!--Login   -->
+                    <!--Login   -->
                     <b-form @submit.prevent="LogIn" @reset.prevent="onResetLogIn" v-if="show">
                         <b-form-group id="input-group-1-login" label="Your Name:" label-for="input-1-login">
                             <b-form-input id="input-1-login" v-model="formLogIn.name" required placeholder="Enter name"></b-form-input>
@@ -45,9 +45,11 @@
                             <b-form-input type="password" class="form-control" label-for="input-3-login"
                                 name="password" required v-model="formLogIn.password" placeholder="Enter email"></b-form-input>
                         </b-form-group>
+
                         <b-button-group class="mx-1">
                             <b-button type="submit" variant="outline-info">Log In</b-button>
                         </b-button-group>
+
                         <b-button-group class="mx-1">
                             <b-button type="reset" variant="outline-danger">Reset</b-button>
                         </b-button-group>
@@ -57,7 +59,6 @@
         </b-col>
         <b-col></b-col>
     </b-row>
-   
 </div>    
     
 </template>
@@ -89,18 +90,15 @@ export default {
         },
         LogOut(){
             this.$store.dispatch('logOut')
-        },     
-
+        },
         onResetLogIn(evt) {
             evt.preventDefault()
             this.formLogIn.email = '';
             this.formLogIn.name = '';
             this.formLogIn.password = '';
-
         }
     }
 }
-
 
 </script>
 <style scoped>
@@ -117,10 +115,5 @@ export default {
 
 .text-white{
     color:white
-}
-
-card{
-    background-color: cadetblue;
-    opacity:80%;
 }
 </style>

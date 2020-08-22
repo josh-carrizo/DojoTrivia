@@ -12,7 +12,5 @@ var firebaseConfig = {
     VUE_APP_MESSAGINGSENDERID: "734250210148",
     VUE_APP_APPID: "1:734250210148:web:ae80a0ac66415bcb3ea071"
 };
-
-// Initialize Firebase with configurations from above
-const firebaseApp = firebase.initializeApp(firebaseConfig);    // capture initialized app in a variable
-export const db = firebaseApp.firestore();              // export the db so it can be imported into the components that need it
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const db = firebaseApp.firestore();

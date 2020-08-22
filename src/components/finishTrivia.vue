@@ -10,9 +10,9 @@
       </b-alert>
       <br>
       <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
-      <router-link class="link-play" v-bind:to="{path: '/playTrivia'}">
-        <b-button variant="outline-dark">Play!</b-button>
-      </router-link>
+        <router-link class="link-play" v-bind:to="{path: '/playTrivia'}">
+          <b-button variant="success"><b-icon icon="controller"></b-icon> Play!</b-button>
+        </router-link>
         <br>
         <h6>Click the button above to start the trivia game</h6>
       </b-jumbotron>
@@ -54,24 +54,24 @@
 <script>
 import { db } from '@/firebase';  
 
-  export default {
-    name:"finishTrivia",
-    created(){
-      setTimeout( () => this.$router.push({ path: '/'}), 6000);
+export default {
+  name:"finishTrivia",
+  /*created(){
+    setTimeout( () => this.$router.push({ path: '/'}), 6000);
 
+  },*/
+  computed: {
+    User() {
+      return this.$store.state.User;
     },
-    computed: {
-      User() {
-        return this.$store.state.User;
-      },
-      puntos(){
-        return this.$store.state.puntos;
-      }
-    },
-    firestore() { 
-      return {
-        qpoints: db.collection('qpoints')
-      }
+    puntos(){
+      return this.$store.state.puntos;
+    }
+  },
+  firestore() { 
+    return {
+      qpoints: db.collection('qpoints')
     }
   }
+}
 </script>

@@ -39,41 +39,39 @@ export default {
       fake2: '',
       fake3: ''
     }
-
   },
   methods:{
     addQuestion(){
-        let sortAnswers = [
-          { 
-            text: this.correctAnswer,
-            isCorrect: true
-          },
-          { 
-            text: this.fake1,
-            isCorrect: false
-          },
-          { 
-            text: this.fake2,
-            isCorrect: false
-          },
-          { 
-            text: this.fake3,
-            isCorrect: false
-          }
-        ]
-        sortAnswers = sortAnswers.sort(() => 0.5 - Math.random());
+      let sortAnswers = [
+        { 
+          text: this.correctAnswer,
+          isCorrect: true
+        },
+        { 
+          text: this.fake1,
+          isCorrect: false
+        },
+        { 
+          text: this.fake2,
+          isCorrect: false
+        },
+        { 
+          text: this.fake3,
+          isCorrect: false
+        }
+      ]
+      sortAnswers = sortAnswers.sort(() => 0.5 - Math.random());
 
-        console.log('Funciona AddQuestion')
-        db.collection('questions').add({
-          question: this.question,
-          sortAnswers : sortAnswers
-
-        });
-          this.question= '',
-          this.correctAnswer= '',
-          this.fake1= '',
-          this.fake2= '',
-          this.fake3= ''
+      console.log('Funciona AddQuestion')
+      db.collection('questions').add({
+        question: this.question,
+        sortAnswers : sortAnswers
+      });
+      this.question= '',
+      this.correctAnswer= '',
+      this.fake1= '',
+      this.fake2= '',
+      this.fake3= ''
     }
   }
 }

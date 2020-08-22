@@ -9,10 +9,9 @@
       <b-form-radio v-model="question0" :value="selectedQuestion[0].sortAnswers[1].isCorrect ? '1' : '0' ">{{selectedQuestion[0].sortAnswers[1].text}}</b-form-radio>
       <b-form-radio v-model="question0" :value="selectedQuestion[0].sortAnswers[2].isCorrect ? '1' : '0' ">{{selectedQuestion[0].sortAnswers[2].text}}</b-form-radio>
       <b-form-radio v-model="question0" :value="selectedQuestion[0].sortAnswers[3].isCorrect ? '1' : '0' ">{{selectedQuestion[0].sortAnswers[3].text}}</b-form-radio>
-    <br>
+      <br>
     </b-form-radio-group>
     <br>
-
     <b-form-radio-group required>
       <br>
       <div>{{selectedQuestion[1].question}}</div>
@@ -20,10 +19,9 @@
       <b-form-radio v-model="question1" :value="selectedQuestion[1].sortAnswers[1].isCorrect ? '1' : '0' ">{{selectedQuestion[1].sortAnswers[1].text}}</b-form-radio>
       <b-form-radio v-model="question1" :value="selectedQuestion[1].sortAnswers[2].isCorrect ? '1' : '0' ">{{selectedQuestion[1].sortAnswers[2].text}}</b-form-radio>
       <b-form-radio v-model="question1" :value="selectedQuestion[1].sortAnswers[3].isCorrect ? '1' : '0' ">{{selectedQuestion[1].sortAnswers[3].text}}</b-form-radio>
-    <br>
+      <br>
     </b-form-radio-group>
     <br>
-
     <b-form-radio-group required>
       <br>
       <div>{{selectedQuestion[2].question}}</div>
@@ -31,11 +29,10 @@
       <b-form-radio v-model="question2" :value="selectedQuestion[2].sortAnswers[1].isCorrect ? '1' : '0' ">{{selectedQuestion[2].sortAnswers[1].text}}</b-form-radio>
       <b-form-radio v-model="question2" :value="selectedQuestion[2].sortAnswers[2].isCorrect ? '1' : '0' ">{{selectedQuestion[2].sortAnswers[2].text}}</b-form-radio>
       <b-form-radio v-model="question2" :value="selectedQuestion[2].sortAnswers[3].isCorrect ? '1' : '0' ">{{selectedQuestion[2].sortAnswers[3].text}}</b-form-radio>
-    <br>
+      <br>
     </b-form-radio-group>
     <br>
-
-    <b-button variant="info"  type="submit">Finish Trivia</b-button>
+    <b-button variant="info"  type="submit"><b-icon icon="check-square-fill">Finish Trivia</b-button>
   </b-form>
 
 </div>
@@ -108,7 +105,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

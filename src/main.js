@@ -35,55 +35,55 @@ const store = new Vuex.Store({
     setPoints(state, datospuntaje){
       state.puntos = datospuntaje
     }
-},
+  },
   actions: {
     registerAction(context, datos) {
       firebase.auth()
         .createUserWithEmailAndPassword(datos.email, datos.password)
-        .then(function (response) {
-          console.log(response)
-          firebase.auth().currentUser.updateProfile({
-            displayName: datos.name
+          .then(function (response) {
+            console.log(response)
+            firebase.auth().currentUser.updateProfile({
+              displayName: datos.name
+            })
           })
-        })
         
-        .then(function (response) {
-          console.log(response)
-          context.commit('setError', null);
-          context.commit('setUser', {email: datos.email, displayName:datos.name});
-          router.push('/');
-        })
-        .catch ((error) => {
-          console.log(error)
-          context.commit('setError', error.message);
-          context.commit('setUser',null);
-        })
+          .then(function (response) {
+            console.log(response)
+            context.commit('setError', null);
+            context.commit('setUser', {email: datos.email, displayName:datos.name});
+            router.push('/');
+          })
+          .catch ((error) => {
+            console.log(error)
+            context.commit('setError', error.message);
+            context.commit('setUser',null);
+          })
     },
     logIn(context, datos) {
       firebase
       .auth()
-      .signInWithEmailAndPassword(datos.email, datos.password)
-      .then(response => {
-        console.log(response)
-        context.commit('setError', null);
-        context.commit('setUser', response.user)
-        router.push('/')
-      })
-      .catch(error => {
-        context.commit('setError', error.message)
-        context.commit('setUser', null)
-      })
+        .signInWithEmailAndPassword(datos.email, datos.password)
+          .then(response => {
+            console.log(response)
+            context.commit('setError', null);
+            context.commit('setUser', response.user)
+            router.push('/')
+          })
+          .catch(error => {
+            context.commit('setError', error.message)
+            context.commit('setUser', null)
+          })
     },
     logOut(context){
       firebase
       .auth()
-      .signOut()
-        .then(() => {
-          context.commit('setError', null)
-          context.commit('setUser', null)
-          router.push('/login')
-        })
-      },
+        .signOut()
+          .then(() => {
+            context.commit('setError', null)
+            context.commit('setUser', null)
+            router.push('/login')
+          })
+    },
     triviaPlayed(context, datospuntaje){
       context.commit('setPoints', datospuntaje);
       router.push('/finishTrivia')
